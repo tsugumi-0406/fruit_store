@@ -1,0 +1,20 @@
+.header {
+    background-color: #FFFFFF;
+}
+
+.header__inner {
+    max-width: 1512px;
+}
+
+.header__logo {
+    color: #F5C800;
+    font-family: 'jsMath-cmti10', serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 30px;
+}
+
+.main {
+    max-width: 1512px;
+    background-color: #F8F8F8;
+}

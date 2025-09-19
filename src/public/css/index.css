@@ -1,0 +1,20 @@
+.page-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-form{
+    width: 240px;
+}
+
+.search-form__text{
+    width: 100%;
+}
+
+.search-form__submit{
+    width: 100%;
+}
+
+.search-form__sort-select{
+    width: 100%;
+}
