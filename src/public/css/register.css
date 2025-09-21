@@ -1,0 +1,13 @@
+.main-inner {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.form__label--required{
+    background-color: #FD0707;
+    color: #FFFFFF;
+}
+
+.form__label--possible{
+    color: #FD0707;
+}

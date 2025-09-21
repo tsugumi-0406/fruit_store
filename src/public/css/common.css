@@ -17,4 +17,6 @@
 .main {
     max-width: 1512px;
     background-color: #F8F8F8;
+    display: flex;
+    justify-content: center;
 }

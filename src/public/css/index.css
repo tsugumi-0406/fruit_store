@@ -3,18 +3,24 @@
     justify-content: space-between;
 }
 
-.search-form{
+.search-form {
     width: 240px;
 }
 
-.search-form__text{
+.search-form__text {
     width: 100%;
 }
 
-.search-form__submit{
+.search-form__submit {
     width: 100%;
 }
 
-.search-form__sort-select{
+.search-form__sort-select {
     width: 100%;
+}
+
+svg.w-5.h-5 {
+    /*paginateメソッドの矢印の大きさ調整のために追加*/
+    width: 30px;
+    height: 30px;
 }

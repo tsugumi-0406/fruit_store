@@ -29,7 +29,7 @@
     </div>
 </div>
 @endforeach
-
-
-
+<div class="pagination">
+    {{ $products->links() }}
+</div>
 @endsection

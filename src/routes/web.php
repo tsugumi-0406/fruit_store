@@ -14,16 +14,17 @@ use App\Http\Controllers\FruitController;
 |
 */
 
-Route::get('/products', [FruitController::class, 'index']);
- 
+Route::get('/products', [FruitController::class, 'index'])->name('products.index');;
+
+Route::get('/products/search', [FruitController::class, 'search']);
+
+Route::get('/products/register', [FruitController::class, 'add']);
+
+Route::post('/products/register', [FruitController::class, 'store'])->name('images.store');
 
 Route::get('/products/{productId}', [FruitController::class, 'detail']);
 
 Route::get('/products/{productId}/update', [FruitController::class, 'update']);
-
-Route::get('/products/register', [FruitController::class, 'register']);
-
-Route::get('/products/products/search', [FruitController::class, 'search']);
 
 Route::get('/products/{productId}/delete', [FruitController::class, 'delete']);
 
