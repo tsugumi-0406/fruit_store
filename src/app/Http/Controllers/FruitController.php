@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Season;
+use App\Http\Requests\StoreRequest;
 
 class FruitController extends Controller
 {
@@ -27,10 +29,14 @@ class FruitController extends Controller
     }
 
     // 登録ボタンでデータベースに登録する
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
+        if ($request->has('back')) {
+            return redirect()->route('products.index');
+        }
         $product = $request->only(['name', 'price', 'description']);
         $product['image'] = 'noimage.png';
+        // ↑一旦noimage.pngをimageカラムに挿入する
 
          if ($request->hasFile('image')) {
             $path = $request->file('image')->store('products', 'public');
@@ -46,16 +52,35 @@ class FruitController extends Controller
 
     
     // 商品詳細表示
-    public function detail()
+    public function detail(Request $request, $productId)
     {
-        return view ('detail');
+        if ($request->has('back')) {
+            return redirect()->route('products.index');
+        }
+
+        $product = Product::with('seasons')->findOrFail($productId);
+        $seasons = Season::all();
+        return view ('detail', compact('product', 'seasons'));
     }
 
     // 商品更新
-    public function update()
+    public function update(StoreRequest $request, $productId)
     {
-        return view ('update');
-    }
+        $product = Product::findOrFail($productId);
+
+        $productData = $request->only(['name', 'price', 'description']);
+
+            if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('products', 'public');
+            $productData['image'] = $path;
+        }
+
+        $product->update($productData);
+
+        $product->seasons()->sync($request->season_id);
+        
+        return redirect('/products');
+    }       
 
    
 

@@ -24,7 +24,7 @@ Route::post('/products/register', [FruitController::class, 'store'])->name('imag
 
 Route::get('/products/{productId}', [FruitController::class, 'detail']);
 
-Route::get('/products/{productId}/update', [FruitController::class, 'update']);
+Route::patch('/products/{productId}/update', [FruitController::class, 'update'])->name('products.update');
 
 Route::get('/products/{productId}/delete', [FruitController::class, 'delete']);
 

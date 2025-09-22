@@ -6,11 +6,13 @@
 @section('content')
 <div class="page-top">
     <h2 class="main__title">商品一覧</h2>
-    <form action="" class="add-form">
+    <form action="/products/register" class="add-form">
+        @csrf
         <button class="add-form__submit">+商品を追加</button>
     </form>
 </div>
 <form action="" class="search-form">
+    @csrf
     <input type="text" class="search-form__text" placeholder="商品名で検索">
     <button class="search-form__submit">検索</button>
     <label for="sortSelect" class="search-form__sort-label">並べ替え: </label>

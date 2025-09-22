@@ -7,7 +7,7 @@
 @section('content')
 <div class="main-inner">
     <h2 class="main-inner__title">商品登録</h2>
-    <form action="/products/register" class="form" method="post" enctype="multipart/form-data">
+    <form action="{{ route('products.update', $product->id) }}" class="form" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form__group">
           <div class="form__group-title">
@@ -19,7 +19,9 @@
               <input type="text" name="name" placeholder="商品名を入力" />
             </div>
             <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
+              @error('name')
+              {{ $errors->first('name') }}
+              @enderror
             </div>
           </div>
         </div>
@@ -34,7 +36,9 @@
               <input type="number" name="price" placeholder="値段を入力" />
             </div>
             <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
+              @error('price')
+              {{ $errors->first('price') }}
+              @enderror
             </div>
           </div>
         </div>
@@ -49,7 +53,9 @@
                 <input type="file" name="image" accept="image/*">ファイルを選択</input>
             </div>
             <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
+              @error('image')
+              {{ $errors->first('image') }}
+              @enderror
             </div>
           </div>
         </div>
@@ -80,7 +86,9 @@
                 </div>
             </div>
             <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
+              @error('season_id')
+              {{ $errors->first('season_id') }}
+              @enderror
             </div>
           </div>
         </div>
@@ -95,7 +103,9 @@
               <textarea name="description" placeholder="商品の説明を入力"></textarea>
             </div>
             <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
+              @error('description')
+              {{ $errors->first('description') }}
+              @enderror
             </div>
           </div>
         </div>
