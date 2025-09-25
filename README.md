@@ -15,6 +15,7 @@ Laravel 環境構築
 4. php artisan key:generate
 5. php artisan migrate
 6. php artisan db:seed
+7. pphp artisan storage:link
 
 ##使用技術
 ・PHP 8.1
