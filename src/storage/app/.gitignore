@@ -1,3 +1,6 @@
-*
-!public/
-!.gitignore
+# storage 全体は無視
+/src/storage/*
+
+# ただし public 配下は追跡する
+!/src/storage/app/public
+!/src/storage/app/public/**

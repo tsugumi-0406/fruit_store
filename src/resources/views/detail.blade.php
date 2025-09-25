@@ -17,6 +17,14 @@
             <input type="hidden" name="id" value="{{ $product['id'] }}">
             <div class="main-content__image">
                 <img src="{{ asset('storage/' . $product->image) }}" alt="" class="product-card__content-image" name="image" width="100%">
+                <div class="form__input--text">
+            <input type="file" accept="image/*" name="image">
+            <div class="form__error">
+                @error('image')
+                    {{ $errors->first('image') }}
+                @enderror
+            </div>
+        </div>
             </div>
             <div class="main-content__centence">
                 <div class="main-content__group">
@@ -28,7 +36,7 @@
                              @enderror
                         </div>
                 </div>
-                 <div class="main-content__group">
+                 <div class="main-content__group-price">
                     <label for="" class="main-content__title-label">値段</label>
                     <input type="text" class="main-content__input" value="{{ $product['price'] }}" name="price">
                     <div class="form__error">
@@ -37,7 +45,7 @@
                         @enderror
                     </div>
                 </div>
-                 <div class="main-content__group">
+                 <div class="main-content__group-season">
                     <label for="" class="main-content__title-label">季節</label>
                     <div class="checkbox__wrapper">
                     @foreach($seasons as $season)
@@ -53,14 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="form__input--text">
-            <input type="file" accept="image/*" name="image">
-            <div class="form__error">
-                @error('image')
-                    {{ $errors->first('image') }}
-                @enderror
-            </div>
-        </div>
+        
         <div class="main-content__group">
             <label for="" class="main-content__title-label">商品説明</label>
             <textarea class="main-content__input-textarea" name="description">{{ $product['description'] }}</textarea>
