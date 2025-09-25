@@ -22,9 +22,9 @@ Route::get('/products/register', [FruitController::class, 'add']);
 
 Route::post('/products/register', [FruitController::class, 'store'])->name('images.store');
 
-Route::get('/products/{productId}', [FruitController::class, 'detail']);
+Route::get('/products/{productId}', [FruitController::class, 'detail'])->name('products.detail');
 
 Route::patch('/products/{productId}/update', [FruitController::class, 'update'])->name('products.update');
 
-Route::get('/products/{productId}/delete', [FruitController::class, 'delete']);
+Route::delete('/products/{productId}', [FruitController::class, 'delete'])->name('products.delete');
 

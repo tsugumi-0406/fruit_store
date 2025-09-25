@@ -17,7 +17,7 @@
          </h1>
     </div>
     </header>
-    <main>
+    <main class="main">
       @yield('content')
     </main>
 </body>

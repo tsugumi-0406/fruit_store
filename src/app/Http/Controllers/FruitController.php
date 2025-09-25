@@ -12,17 +12,43 @@ class FruitController extends Controller
     // 商品一覧表示
     public function index()
     {
-        $products = Product::select(['name', 'price', 'image'])->paginate(6);
-        return view ('index', compact('products'));
+        $products = Product::select(['id', 'name', 'price', 'image'])->paginate(6);
+        $sortType = null;
+        return view ('index', compact('products', 'sortType'));
     }
 
      // 商品検索
-    public function search()
+    public function search(Request $request)
     {
-        return view ('search');
+         $query = Product::query();
+
+    // キーワード検索
+    if ($request->filled('keyword')) {
+        $query->where('name', 'like', '%' . $request->keyword . '%');
     }
 
-    // 入力画面表示
+    // ソート処理
+        $sortType = $request->input('sort', 'price-desc');
+        switch ($sortType) {
+            case 'price-desc':
+                $query->orderByRaw('CAST(price AS UNSIGNED) DESC');
+                break;
+            case 'price-asc':
+                $query->orderByRaw('CAST(price AS UNSIGNED) ASC');
+                break;
+            default:
+                $query->orderBy('id', 'asc');
+        }
+
+        // ページネーション＋パラメータ保持
+        $products = $query->paginate(6)->appends($request->query());
+
+        return view('index', compact('products', 'sortType'));
+    }
+
+    
+
+    // 追加入力画面表示
      public function add()
     {
         return view ('register');
@@ -46,7 +72,7 @@ class FruitController extends Controller
         $product = Product::create($product);
 
         $product->seasons()->sync($request->season_id);
-        $products = Product::select(['name', 'price', 'image'])->paginate(6);
+        $products = Product::select(['id', 'name', 'price', 'image'])->paginate(6);
         return redirect('/products');
     }
 
@@ -81,17 +107,11 @@ class FruitController extends Controller
         
         return redirect('/products');
     }       
-
-   
-
-    
-
    
     // 削除機能
-    public function delete()
+    public function delete(Request $request)
     {
-        return view ('delete');
+        Product::find($request->id)->delete();
+        return redirect('/products');
     }
-
-
 }
