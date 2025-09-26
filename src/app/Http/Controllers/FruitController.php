@@ -62,7 +62,6 @@ class FruitController extends Controller
         }
         $product = $request->only(['name', 'price', 'description']);
         $product['image'] = 'noimage.png';
-        // ↑一旦noimage.pngをimageカラムに挿入する
 
          if ($request->hasFile('image')) {
             $path = $request->file('image')->store('products', 'public');

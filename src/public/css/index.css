@@ -1,6 +1,11 @@
+.page-top{
+    margin: 0 10px;
+}
+
 .main-content{
     display: flex;
     justify-content: space-between;
+    margin: 0 10px;
 }
 
 .page-top {
@@ -97,4 +102,9 @@ svg.w-5.h-5 {
     /*paginateメソッドの矢印の大きさ調整のために追加*/
     width: 30px;
     height: 30px;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
 }
