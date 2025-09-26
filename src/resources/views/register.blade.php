@@ -18,7 +18,7 @@
               <div class="form__input-text">
                 <input type="text" name="name" placeholder="商品名を入力" class="form__input-name">
               </div>
-              <div class="form__error-name">
+              <div class="form__error">
                 @error('name')
                 {{ $errors->first('name') }}
                 @enderror

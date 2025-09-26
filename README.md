@@ -15,7 +15,7 @@ Laravel 環境構築
 4. php artisan key:generate
 5. php artisan migrate
 6. php artisan db:seed
-7. pphp artisan storage:link
+7. php artisan storage:link
 
 ##使用技術
 ・PHP 8.1
@@ -27,4 +27,4 @@ Laravel 環境構築
 ・phpMyAdmin : http://localhost:8080/
 
 ##ER図
-![alt text](image.png)
+![alt text](image-1.png)
